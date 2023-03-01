@@ -9,7 +9,7 @@ function AnimePage() {
     
     let { animeId:id } = useParams()
 
-    const {isFetching, isError, data:anime, refetch:refetchAnime} = useQuery('anime', () => {
+    const {isFetching, isLoading, isError, data:anime, refetch:refetchAnime} = useQuery('anime', () => {
         return axios.get(`https://api.jikan.moe/v4/anime/${id}`)
     })
 
@@ -25,7 +25,7 @@ function AnimePage() {
         }, 600)
     }, [id])
 
-    if(isFetching){
+    if(isFetching || isLoading){
         return  (
             <div className='loading-gif'>
                     <img src={loading} alt="loading gif" />
@@ -49,17 +49,14 @@ function AnimePage() {
         <section className='anime-page'>
             <div className="anime-page-main">
                 <div className="anime-page-heading"  style={style}>
-                    <img className='anime-page-image shadow' src={anime?.data.data.images.webp.image_url} />
+                    <img className='anime-page-image shadow' alt={anime?.data.data.title_english || anime?.data.data.titles[1].title} src={anime?.data.data.images.webp.image_url} />
                 </div>
                 <div className="anime-page-test">
                     <h2>{anime?.data.data.title_english || anime?.data.data.titles[1].title}</h2>
                     <div className="anime-page-info">
                         {<p className='shadow rating'><ion-icon name="film-sharp"></ion-icon> {rating || 'unkown'}</p>}
                         {<p className='shadow score'><ion-icon name="star"></ion-icon> {score || 'unkown'}</p>}
-                        {<p className='shadow duration'><ion-icon name="time-sharp"></ion-icon> {duration || 'unkown'} min</p>}
-                        {/* {anime?.data.data.rating && <p className='shadow rating'><ion-icon name="film-sharp"></ion-icon> {rating || 'unkown'}</p>}
-                        {anime?.data.data.score && <p className='shadow score'><ion-icon name="star"></ion-icon> {score || 'unkown'}</p>}
-                        {anime?.data.data.duration && <p className='shadow duration'><ion-icon name="time-sharp"></ion-icon> {duration || 'unkown'} min</p>} */}
+                        {<p className='shadow duration'><ion-icon name="time-sharp"></ion-icon> {`${duration} min`|| 'unkown'}</p>}
                     </div>
                     <p className='anime-page-desc'>{anime?.data.data.synopsis || 'There is no description for this anime.'}</p>
                 </div>
