@@ -20,7 +20,7 @@ function SearchPage() {
             <section className='searched-anime-404'>
                 <h2>Sorry. 🤕</h2>
                 <p>we could not found any anime with name of <span style={{borderBottom:'3px solid black'}}>{anime}</span>.</p>
-                <Link to='/' className='searched-go-back shadow'>Go back to home page</Link>
+                <Link to='/' className='searched-go-back shadow' style={{display:'flex', alignItems:'center', gap:'1rem',}}><ion-icon name="home-sharp"></ion-icon> home page</Link>
             </section>
         )
     }
