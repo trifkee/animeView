@@ -1,24 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import NavBar from "./Components/NavBar";
+import AnimePage from "./Pages/AnimePage";
+import Home from './Pages/Home'
+import Genres from './Pages/Genres'
+import SearchPage from "./Pages/SearchPage";
+import { AnimeProvider } from "./store/AnimeContext";
+import { Routes, Route } from "react-router-dom";
+import { QueryClientProvider, QueryClient } from 'react-query'
+import { ReactQueryDevtools } from 'react-query/devtools'
+
+const queryClient = new QueryClient()
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <QueryClientProvider client={queryClient}>  
+      <div className="App">
+        <AnimeProvider>
+          <NavBar />
+          <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='/anime/:animeId' element={<AnimePage />} />
+            <Route path='/genres' element={<Genres />} />
+            <Route path='/search/:anime' element={<SearchPage />} />
+          </Routes>
+        </AnimeProvider>
+      </div>
+      {/* <ReactQueryDevtools initialIsOpen={false} position={"bottom-right"}/> */}
+    </QueryClientProvider>
   );
 }
 
