@@ -22,7 +22,7 @@ function AnimePage() {
         refetchRecommended()
         setTimeout(()=>{
             window.scrollTo(0,0, 'smooth')
-        }, 600)
+        }, 500)
     }, [id])
 
     if(isFetching || isLoading){
@@ -56,16 +56,16 @@ function AnimePage() {
                     <div className="anime-page-info">
                         {<p className='shadow rating'><ion-icon name="film-sharp"></ion-icon> {rating || 'unkown'}</p>}
                         {<p className='shadow score'><ion-icon name="star"></ion-icon> {score || 'unkown'}</p>}
-                        {<p className='shadow duration'><ion-icon name="time-sharp"></ion-icon> {`${duration} min`|| '?'}</p>}
+                        {<p className='shadow duration'><ion-icon name="time-sharp"></ion-icon> {duration ? `${duration} min` : '?'}</p>}
                     </div>
                     <p className='anime-page-desc'>{anime?.data.data.synopsis || 'There is no description for this anime.'}</p>
                 </div>
             </div>
             <div className="anime-page-recommended">
-               { recommended?.data.data && 
+               { 
                 <><h3 style={{display:'flex', alignItems:'center', gap:'.5rem'}}>Similar to this <ion-icon name="play-forward-sharp"></ion-icon></h3>
                 <div className="recommended-animes">
-                {recommended?.data.data.map(recommendedAnime => <Anime id={recommendedAnime.entry.mal_id} key={recommendedAnime.entry.mal_id} title={recommendedAnime.entry.title} image={recommendedAnime.entry.images.webp.image_url}/>)}
+                {recommended?.data.data.length > 0 ? recommended?.data.data.map(recommendedAnime => <Anime id={recommendedAnime.entry.mal_id} key={recommendedAnime.entry.mal_id} title={recommendedAnime.entry.title} image={recommendedAnime.entry.images.webp.image_url}/>) : <p>We could not find any similar Anime to this...</p>}
                 </div></>
                }
             </div>
