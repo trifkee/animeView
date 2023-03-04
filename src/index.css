@@ -46,11 +46,20 @@ ion-icon{
   height: calc(max-content + 10px);
 }
 
-h1,h2,h3,p,a{
-  font-family: 'Poppins', sans-serif;
+h1,h2,h3{
+  font-family: 'Poppins', serif;
+}
+
+p, a{
+  font-family: 'Roboto Mono', sans-serif;
+}
+
+h1,h2,h3{
+  font-weight: 700;
 }
 
 a{
+  font-weight: 700;
   text-decoration: none;
   color: black;
 }
@@ -67,7 +76,9 @@ img{
 .loading-gif{
   background-color: var(--gray);
   color: white;
-  position: absolute;
+  position: fixed;
+  top: 0;
+  left: 0;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -162,6 +173,7 @@ nav{
   text-decoration: none;
   list-style: none;
   color: black;
+  font-weight: 700;
   padding: .5rem 1rem;
 }
 
@@ -230,6 +242,7 @@ nav{
 
 .featured-info h2{
   line-height: 1;
+  width: 70%;
   font-size: 2.5rem;
 }
 
@@ -540,6 +553,10 @@ nav{
 }
 
 @media (min-width:750px){
+  .banner{
+    display: none;
+  }
+
   .nav-bar{
     background-image: linear-gradient(180deg, rgba(0,0,0,.8) -10%, rgba(0,0,0,0));
     display: flex;
