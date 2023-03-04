@@ -44,15 +44,15 @@ function AnimePage() {
     const style = {
         backgroundImage: `linear-gradient(to top, #dfdfdf, rgba(233,233,233,.75), rgba(233,233,233,.95)),url(${anime?.data.data.images.webp.image_url})`
     }
-  
+
     return (
         <section className='anime-page'>
             <div className="anime-page-main">
                 <div className="anime-page-heading"  style={style}>
-                    <img className='anime-page-image shadow' alt={anime?.data.data.title_english || anime?.data.data.titles[1].title} src={anime?.data.data.images.webp.image_url} />
+                    <img loading='lazy' className='anime-page-image shadow' alt={anime?.data.data.title_english || anime?.data.data.titles[1] || anime?.data.data.title_japanese } src={anime?.data.data.images.webp.image_url} />
                 </div>
                 <div className="anime-page-test">
-                    <h2>{anime?.data.data.title_english || anime?.data.data.titles[1].title}</h2>
+                    <h2>{anime?.data.data.title_english || anime?.data.data.titles[0].title || anime?.data.data.title_japanese || 'Unknown'}</h2>
                     <div className="anime-page-info">
                         {<p className='shadow rating'><ion-icon name="film-sharp"></ion-icon> {rating || 'unkown'}</p>}
                         {<p className='shadow score'><ion-icon name="star"></ion-icon> {score || 'unkown'}</p>}
@@ -65,7 +65,7 @@ function AnimePage() {
                { 
                 <><h3 style={{display:'flex', alignItems:'center', gap:'.5rem'}}>Similar to this <ion-icon name="play-forward-sharp"></ion-icon></h3>
                 <div className="recommended-animes">
-                {recommended?.data.data.length > 0 ? recommended?.data.data.map(recommendedAnime => <Anime id={recommendedAnime.entry.mal_id} key={recommendedAnime.entry.mal_id} title={recommendedAnime.entry.title} image={recommendedAnime.entry.images.webp.image_url}/>) : <p>We could not find any similar Anime to this...</p>}
+                {recommended?.data.data.length > 0 ? recommended?.data.data.map(recommendedAnime => <Anime id={recommendedAnime.entry.mal_id} key={recommendedAnime.entry.mal_id} title={recommendedAnime.entry.title || recommendedAnime.entry.title_japanese || 'Unknown'} image={recommendedAnime.entry.images.webp.image_url}/>) : <p>We could not find any similar Anime to this...</p>}
                 </div></>
                }
             </div>
