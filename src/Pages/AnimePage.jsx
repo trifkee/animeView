@@ -1,7 +1,7 @@
 import loading from '../assets/loading.gif'
 import React, { useEffect } from 'react'
 import { useQuery } from 'react-query'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import Anime from '../Components/Anime'
 import axios from 'axios'
 
@@ -10,7 +10,7 @@ function AnimePage() {
     let { animeId:id } = useParams()
 
     const {isFetching, isLoading, isError, data:anime, refetch:refetchAnime} = useQuery('anime', () => {
-        return axios.get(`https://api.jikan.moe/v4/anime/${id}`)
+        return axios.get(`https://api.jikan.moe/v4/anime/${id}/full`)
     })
 
     const {data:recommended, refetch:refetchRecommended} = useQuery('recommended', () => {
@@ -49,7 +49,8 @@ function AnimePage() {
         <section className='anime-page'>
             <div className="anime-page-main">
                 <div className="anime-page-heading"  style={style}>
-                    <img loading='lazy' className='anime-page-image shadow' alt={anime?.data.data.title_english || anime?.data.data.titles[1] || anime?.data.data.title_japanese } src={anime?.data.data.images.webp.image_url} />
+                    <img loading='lazy' style={{marginBottom:'.75rem'}} className='anime-page-image shadow' alt={anime?.data.data.title_english || anime?.data.data.titles[1] || anime?.data.data.title_japanese } src={anime?.data.data.images.webp.image_url} />
+                    <a href={anime?.data.data.streaming[0].url} target="_blank" style={{padding:'.5rem 1rem'}} className="featured-watch shadow">WATCH NOW <ion-icon name="play-sharp"></ion-icon></a>
                 </div>
                 <div className="anime-page-test">
                     <h2>{anime?.data.data.title_english || anime?.data.data.titles[0].title || anime?.data.data.title_japanese || 'Unknown'}</h2>
