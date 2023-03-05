@@ -386,6 +386,8 @@ nav{
   background-size: cover;
   background-repeat: no-repeat;
   backdrop-filter: blur(1000px);
+  display: flex;
+  flex-direction: column;
 }
 
 .anime-page-description{
@@ -396,6 +398,7 @@ nav{
 
 .anime-page h2{
   line-height: 1;
+  margin-top: 1rem;
   font-size: 2rem;
 }
 
