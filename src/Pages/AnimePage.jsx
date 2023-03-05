@@ -67,7 +67,7 @@ function AnimePage() {
                { 
                 <><h3 style={{display:'flex', alignItems:'center', gap:'.5rem'}}>Similar to this <ion-icon name="play-forward-sharp"></ion-icon></h3>
                 <div className="recommended-animes">
-                {recommended?.data.data.length > 0 ? recommended?.data.data.map(recommendedAnime => <Anime id={recommendedAnime.entry.mal_id} key={recommendedAnime.entry.mal_id} title={recommendedAnime.entry.title || recommendedAnime.entry.title_japanese || 'Unknown'} image={recommendedAnime.entry.images.webp.image_url}/>) : <p>We could not find any similar Anime to this...</p>}
+                {recommended?.data.data ? recommended?.data.data.map(recommendedAnime => <Anime id={recommendedAnime.entry.mal_id} key={recommendedAnime.entry.mal_id} title={recommendedAnime.entry.title || recommendedAnime.entry.title_japanese || 'Unknown'} image={recommendedAnime.entry.images.webp.image_url}/>) : <p>We could not find any similar Anime to this...</p>}
                 </div></>
                }
             </div>
