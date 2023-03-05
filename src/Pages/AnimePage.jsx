@@ -51,7 +51,7 @@ function AnimePage() {
             <div className="anime-page-main">
                 <div className="anime-page-heading"  style={style}>
                     <img loading='lazy' style={{marginBottom:'.75rem'}} className='anime-page-image shadow' alt={anime?.data.data.title_english || anime?.data.data.titles[1] || anime?.data.data.title_japanese } src={anime?.data.data.images.webp.image_url} />
-                    {url[0] && <a href={url[0].url} target="_blank" style={{padding:'.5rem 1rem'}} className="featured-watch shadow">WATCH NOW <ion-icon name="play-sharp"></ion-icon></a>}
+                    {url[0] && <a href={url[0].url} target="_blank" style={{padding:'.5rem 1rem'}} className="featured-trailer shadow">WATCH NOW <ion-icon name="play-sharp"></ion-icon></a>}
                 </div>
                 <div className="anime-page-test">
                     <h2>{anime?.data.data.title_english || anime?.data.data.titles[0].title || anime?.data.data.title_japanese || 'Unknown'}</h2>
