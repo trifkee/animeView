@@ -10,7 +10,7 @@ function Genres() {
   const [genreTitle, setGenreTitle] = useState('Action')
 
   const { data:genreData } = useQuery('genres',()=> {
-    return axios.get(`https://api.jikan.moe/v4/genres/anime`)
+    return axios.get(`https://api.jikan.moe/v4/genres/anime?filter=genres`)
   })
 
   const {data:genreList, isFetching, refetch} = useQuery('animeByGenre', () => {
