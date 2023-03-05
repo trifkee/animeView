@@ -40,6 +40,7 @@ function AnimePage() {
     let duration = anime?.data.data.duration && anime?.data.data.duration.split(' ')[0]
     let rating = anime?.data.data.rating && anime?.data.data.rating.split(' ')[0]
     let score = anime?.data.data.score && anime?.data.data.score.toFixed(1)
+    let url = anime?.data.data.streaming
 
     const style = {
         backgroundImage: `linear-gradient(to top, #dfdfdf, rgba(233,233,233,.75), rgba(233,233,233,.95)),url(${anime?.data.data.images.webp.image_url})`
@@ -50,7 +51,7 @@ function AnimePage() {
             <div className="anime-page-main">
                 <div className="anime-page-heading"  style={style}>
                     <img loading='lazy' style={{marginBottom:'.75rem'}} className='anime-page-image shadow' alt={anime?.data.data.title_english || anime?.data.data.titles[1] || anime?.data.data.title_japanese } src={anime?.data.data.images.webp.image_url} />
-                    <a href={anime?.data.data.streaming[0].url} target="_blank" style={{padding:'.5rem 1rem'}} className="featured-watch shadow">WATCH NOW <ion-icon name="play-sharp"></ion-icon></a>
+                    {url[0] && <a href={url[0].url} target="_blank" style={{padding:'.5rem 1rem'}} className="featured-watch shadow">WATCH NOW <ion-icon name="play-sharp"></ion-icon></a>}
                 </div>
                 <div className="anime-page-test">
                     <h2>{anime?.data.data.title_english || anime?.data.data.titles[0].title || anime?.data.data.title_japanese || 'Unknown'}</h2>
