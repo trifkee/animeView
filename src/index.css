@@ -4,6 +4,12 @@
   box-sizing: border-box;
 }
 
+:root{
+  --yellow: #FFFF00;
+  --gray: #070707; 
+  --dirt-white: #dfdfdf;
+}
+
 html, body{
   min-height: 100vh;
   overflow-x: hidden;
@@ -25,12 +31,6 @@ button{
 
 ion-icon{
   --ionicon-stroke-width: 3rem;
-}
-
-:root{
-  --yellow: #FEE716;
-  --gray: #1E1E1E; 
-  --dirt-white: #dfdfdf;
 }
 
 /* CAROUSEL */
@@ -125,6 +125,10 @@ nav{
   align-items: center;
   color: white;
   transition: .2s ease;
+}
+
+.nav-logo p{
+  font-family: 'Poppins';
 }
 
 .nav-logo img{
@@ -315,6 +319,8 @@ nav{
   /* flex-direction: column; */
   flex-flow: column;
   width: 100%;
+  background-color: var(--gray);
+  -webkit-text-fill-color: white;
 }
 
 .anime-icon img{
@@ -437,7 +443,7 @@ nav{
 .recommended-animes{
   display: grid;
   grid-gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(7rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
 }
 
 /* GENRES PAGE */
@@ -552,6 +558,10 @@ nav{
     height: 30rem;
     float: left;
   }
+
+  .recommended-animes{
+    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  }
 }
 
 @media (min-width:750px){
@@ -569,12 +579,12 @@ nav{
     flex-direction: row;
     color: white;
     padding: 1rem .5rem;
-    transition: .2s ease;
+    transition: .3s ease-in-out;
   }
 
   .nav-bar.active{
     background-color: var(--gray);
-    box-shadow: rgba(0,0,0,.4) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px!important;
+    box-shadow:var(--yellow) 0px 6px 0px -3px, rgba(0,0,0,.5) 0px 10px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 
   }
 
@@ -744,7 +754,7 @@ nav{
   .genre-link:hover, .genre-link:focus{
     /* color: white; */
     background-color: var(--yellow);
-    outline: 3px solid black!important;
+    outline: 2px solid black!important;
     filter: drop-shadow(2px 2px black)!important;
   }
 
@@ -757,7 +767,7 @@ nav{
   }
 
   .recommended-animes{
-    grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
   }
 
   .anime-page-test{
