@@ -36,8 +36,9 @@ function AnimePage() {
     if(anime.data.data === undefined){
         return(
             <section className='searched-anime-404'>
-                <h2>404</h2>
-                <p>Could not find data for this Anime</p>
+                <h2>Sorry. 🤕</h2>
+                <p>We could not find data for this Anime</p>
+                <code>Status code: {anime?.data.status}</code>
                 <Link to='/' className='searched-go-back shadow' style={{display:'flex', alignItems:'center', gap:'1rem',}}><ion-icon name="home-sharp"></ion-icon> home page</Link>
             </section>
         )
