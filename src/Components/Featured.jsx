@@ -5,7 +5,7 @@ import axios from 'axios'
 import loading from '../assets/loading.gif'
 
 function Featured() {
-    let randAnime
+    let randAnime, randNum, animeList
 
     const {isFetching, isLoading, isFetched, isError, data}  = useQuery('featured-anime', () => {
         return axios.get(`https://api.jikan.moe/v4/top/anime`)
@@ -24,15 +24,15 @@ function Featured() {
     }
 
     if(isFetched){
-        const animeList = data?.data.data
+        animeList = data?.data.data
 
-        const randNum = Math.floor(Math.random() * animeList.length)
+        randNum = Math.floor(Math.random() * animeList.length)
 
         randAnime = animeList[randNum]
     }
 
     const style = {
-        backgroundImage: `linear-gradient(0deg, #dfdfdf 10%, rgba(0,0,0,0)), url(${randAnime?.images.webp.large_image_url})`
+        backgroundImage: `linear-gradient(0deg, rgba(0,0,0,1), rgba(233,233,233,.4)), url(${randAnime?.images.webp.large_image_url})`
     }
 
   return (
