@@ -66,7 +66,7 @@ function AnimePage() {
                     <div className="anime-page-info">
                         {<p className='shadow rating'><ion-icon name="film-sharp"></ion-icon> {rating || 'unkown'}</p>}
                         {<p className='shadow score'><ion-icon name="star"></ion-icon> {score || 'unkown'}</p>}
-                        {<p className='shadow duration'><ion-icon name="time-sharp"></ion-icon> {duration === 'Unknown' ? ' ? min' : `${duration === 1 || duration === 2? `${duration} hr` : `${duration} min`}`}</p>}
+                        {<p className='shadow duration'><ion-icon name="time-sharp"></ion-icon> {duration === 'Unknown' ? ' ? min' : `${duration > 0 || duration < 3 ? `${duration} hr` : `${duration} min`}`}</p>}
                     </div>
                     <p className='anime-page-desc'>{anime?.data.data.synopsis || 'There is no description for this anime.'}</p>
                 </div>
