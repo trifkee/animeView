@@ -39,8 +39,8 @@ function NavBar() {
                     <div className="nav-links">
                     <Link to='/' onClick={handleCloseNav} className='nav-link'>home</Link>
                     <Link to='/genres' onClick={handleCloseNav} className='nav-link'>genres</Link>
-                    <Link to='/discover' onClick={handleCloseNav} className='nav-link'>discover⛔️</Link> {/* discover */}
-                    <Link to='/favorites' onClick={handleCloseNav} className='nav-link'>favorites⛔️</Link> {/*favorites */}
+                    <Link to='/discover' onClick={handleCloseNav} className='nav-link'>discover</Link> {/* discover */}
+                    <Link to='/favorites' onClick={handleCloseNav} className='nav-link'>favorites</Link> {/*favorites */}
                     </div>
                 </ul>
             </nav>
