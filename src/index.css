@@ -5,7 +5,7 @@
 }
 
 :root{
-  --yellow: #FFFF00;
+  --yellow: #FEE716;
   --gray: #202020; 
   --dirt-white: #dfdfdf;
 }
@@ -225,7 +225,7 @@ nav{
 /* FEATURED ANIME */
 
 .featured-section{
-  min-height: 85dvh;
+  min-height: max-content;
   display: flex;
   flex-direction: column;
   /* background-color: red; */
@@ -319,8 +319,8 @@ nav{
   /* flex-direction: column; */
   flex-flow: column;
   width: 100%;
-  background-color: var(--gray);
-  -webkit-text-fill-color: white;
+  /* background-color: var(--gray); */
+  -webkit-text-fill-color: var(--gray);
 }
 
 .anime-icon img{
@@ -387,6 +387,7 @@ nav{
   background-repeat: no-repeat;
   backdrop-filter: blur(1000px);
   display: flex;
+  gap: 1rem;
   flex-direction: column;
 }
 
@@ -573,7 +574,7 @@ nav{
   }
 
   .nav-bar{
-    background-image: linear-gradient(180deg, rgba(0,0,0,.8) -10%, rgba(0,0,0,0));
+    background-image: linear-gradient(180deg, rgba(0,0,0,.5) -10%, rgba(0,0,0,0));
     display: flex;
     position: fixed;
     z-index: 999;
@@ -614,7 +615,8 @@ nav{
     padding: .5re;
     color:white;
     font-size: 1rem;
-    font-weight: 300;
+    font-weight: 800;
+    text-shadow: 2px 2px 1px var(--gray);
   }
 
   .nav-link:focus{
@@ -774,7 +776,7 @@ nav{
   }
 
   .anime-page-test{
-    margin-top: 5rem;
+    margin-top: 2.5rem;
   }
 
   .anime-page-test h2{
