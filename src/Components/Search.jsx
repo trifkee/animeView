@@ -1,8 +1,7 @@
 import React, { useContext } from 'react'
 import magnify from '../assets/search-outline.svg'
 import { useState } from 'react'
-import axios from 'axios'
-import { useQuery } from 'react-query'
+import magnifyIcon from '../assets/magnify.png'
 import { useNavigate } from 'react-router-dom'
 import AnimeContext from '../store/AnimeContext'
 
@@ -19,6 +18,11 @@ function Search() {
 
     const handleSubmit = (e) => {
         e.preventDefault()
+
+        if(searchAnime == ''){
+            return
+        }
+        
         setSearchAnime('')
         handleCloseNav()
         navigate(`/search/${searchAnime}`)
@@ -27,7 +31,10 @@ function Search() {
     return (
             <form onSubmit={handleSubmit} className="search-comp">
                 <h2>Search</h2>
-                <input type="input" placeholder={`Search for anime... `} onSubmit={handleSubmit} onChange={handleSearch} value={searchAnime} className='search shadow' />
+                <div className="search-input">
+                    <button type='submit'><img className='input-icon' src={magnifyIcon} alt="magnify icon" /></button>
+                    <input type="input" placeholder={`Search for anime... `} onSubmit={handleSubmit} onChange={handleSearch} value={searchAnime} className='search shadow' />
+                </div>
             </form>
         )
     }
