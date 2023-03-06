@@ -259,6 +259,7 @@ nav{
   width: 100%;
   display: flex;
   gap: 1rem;
+  margin-bottom: 1rem;
   margin-top: auto;
 }
 
