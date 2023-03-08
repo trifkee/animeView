@@ -824,14 +824,8 @@ nav{
     font-size: 3.5rem;
   }
 
-  .anime-icon{
-    width: 11rem;
-  }
-
   .popular-catalog{
-    display: flex;
-    flex-wrap: wrap;
-    /* grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr)); */
+    grid-template-columns: repeat(5, minmax(10rem, 1fr));
   }
 
   .anime-title{
