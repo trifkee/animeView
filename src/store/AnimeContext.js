@@ -16,7 +16,9 @@ export function AnimeProvider({children}){
     }
 
     // SAVED ANIMES
-    const [favorites, setFavorites] = useState([] || JSON.parse(localStorage.getItem('favorites')))
+    let saved = JSON.parse(localStorage.getItem('favorites'))
+
+    const [favorites, setFavorites] = useState(!saved ? [] : saved)
     
     return (
         <AnimeContext.Provider value={{openNav, handleNav, handleCloseNav, favorites, setFavorites}}>{children}</AnimeContext.Provider>
