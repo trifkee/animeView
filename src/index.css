@@ -51,7 +51,7 @@ h1,h2,h3{
   font-family: 'Poppins', serif;
 }
 
-p, a{
+p, a, span{
   font-family: 'Roboto Mono', sans-serif;
 }
 
@@ -321,6 +321,7 @@ nav{
 
 .search-input{
   position: relative;
+  margin-inline: auto;
 }
 
 .input-icon{
@@ -365,6 +366,7 @@ nav{
   flex-flow: column;
   overflow: hidden;
   width: 100%;
+  max-width: 20rem;
   /* background-color: var(--gray); */
   -webkit-text-fill-color: var(--gray);
   transition: all .1s ease;
@@ -822,8 +824,14 @@ nav{
     font-size: 3.5rem;
   }
 
+  .anime-icon{
+    width: 11rem;
+  }
+
   .popular-catalog{
-    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+    display: flex;
+    flex-wrap: wrap;
+    /* grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr)); */
   }
 
   .anime-title{
