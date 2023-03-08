@@ -52,7 +52,7 @@ function AnimePage() {
     
     
     // HANDLE FAVORITE ( REMOVE OR ADD TO ARRAY ID OF ANIME )
-    let isFavorite = favorites.includes(el => el === anime?.mal_id)
+    let isFavorite = favorites?.some(el => el === anime?.mal_id)
 
     const handleFavorite = (e, id) => {
     
