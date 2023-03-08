@@ -54,8 +54,8 @@ function Favorites() {
                 ) : 
                 (
                     <section className='searched-anime-404' style={{height:'70vh'}}>
-                        <h2 style={{fontSize:'2rem'}}>Oops! Looks like your favorite list is empty.</h2>
-                        <p style={{fontSize:'1rem'}}>Add your favorite anime to the list</p> 
+                        <h2 style={{fontSize:'2rem'}}>Oops!</h2>
+                        <p style={{fontSize:'1rem'}}>Looks like your favorite list is empty. <br /> Add your favorite anime to the list</p> 
                         <Link to='/' className='searched-go-back shadow' style={{display:'flex', alignItems:'center', gap:'1rem',}}><ion-icon name="home-sharp"></ion-icon> home page</Link>
                     </section>
                 )
