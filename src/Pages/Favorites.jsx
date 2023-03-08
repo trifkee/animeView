@@ -1,31 +1,49 @@
-import React, { useContext, useState, useEffect } from 'react'
+import React, { useContext } from 'react'
+import Anime from '../Components/Anime'
 import AnimeContext from '../store/AnimeContext'
-import { useQuery } from 'react-query'
 import axios from 'axios'
+import loading from '../assets/loading.gif'
+import { useQueries } from 'react-query'
 
 function Favorites() {
     const { favorites } = useContext(AnimeContext)
 
-    const [animeList, setAnimeList] = useState({})
+    const fetchFavorites = id => {
+        return axios.get(`https://api.jikan.moe/v4/anime/${id}`)
+    }
 
-    //console.log(favorites)
-    // favorites.forEach( fav => {
-    //     const {data} = useQuery('favAnime', () => {
-    //         return axios (`https://api.jikan.moe/v4/anime/${fav}`)
-    //     })
-
-    //     setAnimeList(prevList => {prevList, data})
-    // })
-
-    // console.log(animeList)
+    const result = useQueries(
+        favorites.map(favId => {
+            return {
+                queryKey: ['anime', favId],
+                queryFn: () => fetchFavorites(favId)
+            }
+        })
+    )
 
     return (
         <section className='popular-section'>
                 
-            <h2>Favorites</h2>
+            <div style={{margin:'5rem 0 1rem 0', display:'flex', flexDirection:'column'}} className="heading">
+                <h2 style={{marginBottom:'0', lineHeight:'.55'}}>Favorites <br /><span style={{fontSize:'1rem', fontWeight:'400'}}>Collection of liked Anime</span></h2>
+            </div>
             <div className="popular-catalog">
-                { favorites?.map(anime => <p>{anime}</p>) }
-                {/* {genreList?.data.data.map(anime => <Anime key={anime.mal_id} id={anime.mal_id} image={anime.images.jpg.image_url} title={anime.title_english || anime.title_japanese || 'unknown' } year={anime.year} props={anime}/>)} */}
+                {result.map(anime => {
+                    if(anime?.isFetched){
+                        console.log(anime.data.data.data)
+                        return <Anime key={anime.data.data.data.mal_id} id={anime.data.data.data.mal_id} image={anime.data.data.data.images.jpg.image_url} title={anime.data.data.data.title_english || anime.data.data.data.title_japanese || 'unknown' } year={anime.data.data.data.year} props={anime} />
+                    } else {
+                        return(
+                            <div className='loading-gif'>
+                                <p>Loading.</p>
+                                <img src={loading} alt="loading gif" />
+                            </div>    
+                        )
+                    }
+                })}
+            </div>
+            <div className="popular-catalog">
+                
             </div>
             
         </section>
