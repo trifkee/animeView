@@ -85,6 +85,7 @@ img{
   align-items: center;
   width: 100%;
   height: 100%;
+  z-index: 9;
 }
 
 .loading-gif img{
@@ -100,6 +101,7 @@ nav{
   position: relative;
   display: sticky;
   top: 0;
+  z-index: 9999;
   width: 100%;
   flex-direction: column;
 }
@@ -207,6 +209,19 @@ nav{
   aspect-ratio: 1;
   transition: all 1s ease;
 }
+.to-home{
+  position: fixed;
+  background-color: var(--yellow);
+  padding: .5rem;
+  font-weight: bold;
+  bottom: 60px;
+  /* transform: translateY(200px); */
+  transform: translatex(-20rem);
+  /* right: -20rem; */
+  aspect-ratio: 1;
+  transition: all 1s ease;
+
+}
 
 .to-top{
   color: black;
@@ -215,9 +230,15 @@ nav{
   align-items: center;
   text-decoration: none;
   font-weight: bold;
+  transition-delay: .2s;
+  z-index: 9;
 }
 
 .to-top.active{
+  /* right: 15px; */
+  transform: translateX(15px);
+}
+.to-home.active{
   /* right: 15px; */
   transform: translateX(15px);
 }
@@ -337,13 +358,25 @@ nav{
 }
 
 .anime-icon{
+  position: relative;
   aspect-ratio: 3/4;
   display: flex;
   /* flex-direction: column; */
   flex-flow: column;
+  overflow: hidden;
   width: 100%;
   /* background-color: var(--gray); */
   -webkit-text-fill-color: var(--gray);
+  transition: all .1s ease;
+}
+
+.anime-icon:hover, .anime-icon:focus{
+  background: var(--yellow);  
+  outline: none;
+}
+
+.anime-icon:hover img, .anime-icon:hover img{
+  scale: 1.020;
 }
 
 .anime-icon img{
@@ -352,10 +385,37 @@ nav{
   height: 100%;
   border-bottom: 2px solid black;
   object-fit: cover;
+  transition: .2s;
 }
 
 .recommended-animes > .anime-icon{
   max-width: 15rem!important;
+}
+
+.anime-page-image-div{
+  position: relative;
+}
+
+.anime-favorite{
+  /* position: absolute; */
+  right: .5rem;
+  top: 4rem;
+  background: var(--gray);
+  color: black;
+  padding: .5rem 1rem;
+  font-size: 1rem;
+  -webkit-text-fill-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Roboto Mono', sans-serif;
+  transition: .2s ease;
+  display: flex;
+  gap: 1rem;
+}
+
+.anime-favorite ion-icon{
+  color: white;
 }
 
 .anime-title{
@@ -479,11 +539,25 @@ nav{
 } */
 
 .genres-list{
-  padding-bottom: 1rem;
+
   width: 100%;
   padding-top: 5rem;
+  padding-bottom: 1rem;
   padding-inline: 1.5rem;
   /* margin-top: 2rem; */
+}
+
+.anime-pagination{
+  /* background: red; */
+  justify-content: center;
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.anime-pagination button{
+  font-weight: 800;
+  padding: .5rem 1rem;
 }
 
 .genre-link{
@@ -725,7 +799,7 @@ nav{
 @media (min-width:970px){
   .nav-bar{
     display: grid;
-    grid-template-columns:25rem 1fr;
+    grid-template-columns:17rem 1fr;
   }
 
   .nav-main{
