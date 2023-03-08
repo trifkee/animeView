@@ -7,6 +7,7 @@ import { AnimeProvider } from "./store/AnimeContext";
 import { Routes, Route } from "react-router-dom";
 import { QueryClientProvider, QueryClient } from 'react-query'
 import { ReactQueryDevtools } from 'react-query/devtools'
+import Favorites from "./Pages/Favorites";
 
 const queryClient = new QueryClient()
 
@@ -18,9 +19,10 @@ function App() {
           <NavBar />
           <Routes>
             <Route path='/' element={<Home />} />
-            <Route path='/anime/:animeId' element={<AnimePage />} />
-            <Route path='/genres' element={<Genres />} />
-            <Route path='/search/:anime' element={<SearchPage />} />
+            <Route path='/anime/:animeId' element={ <AnimePage /> } />
+            <Route path='/genres' element={ <Genres /> } />
+            <Route path='/search/:anime' element={ <SearchPage /> } />
+            <Route path='/favorites' element={ <Favorites /> }/>
           </Routes>
         </AnimeProvider>
       </div>
