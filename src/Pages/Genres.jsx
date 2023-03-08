@@ -6,15 +6,16 @@ import axios from 'axios'
 
 function Genres() {
 
-  const [selectedGenre, setSelectedGenre] = useState(1)
+  const [selectedGenre, setSelectedGenre] = useState(1) 
   const [genreTitle, setGenreTitle] = useState('Action')
+  const [selectedGenrePage, setSelectedGenrePage] = useState(1)
 
   const { data:genreData } = useQuery('genres',()=> {
-    return axios.get(`https://api.jikan.moe/v4/genres/anime?filter=genres`)
+    return axios.get(`https://api.jikan.moe/v4/genres/anime`)
   })
 
   const {data:genreList, isFetching, refetch} = useQuery('animeByGenre', () => {
-    return axios.get(`https://api.jikan.moe/v4/anime?genres=${selectedGenre}`)
+    return axios.get(`https://api.jikan.moe/v4/anime?genres=${selectedGenre}&page=${selectedGenrePage}`)
   })
 
   const handleClick = (e, genreId) => {
@@ -22,9 +23,29 @@ function Genres() {
     setSelectedGenre(genreId)
   }
 
+  const handlePagination = (e) => {
+    let choice = e.target.textContent
+    switch(choice){
+      case 'next >':
+        setSelectedGenrePage(prevPage => prevPage + 1)
+        break;
+      
+      case '< prev':
+        if(selectedGenrePage === 1){
+          return
+        }
+
+        setSelectedGenrePage(prevPage => prevPage - 1)
+        break;
+      
+      default:
+        break
+    }
+  }
+
   useEffect(() =>{
     refetch()
-  }, [selectedGenre])
+  }, [selectedGenre, selectedGenrePage])
 
   
   if(isFetching){
@@ -45,7 +66,14 @@ function Genres() {
                 ))}
             </div>
 
-            <Popular title={genreTitle} genreList={genreList}/>
+            <div>
+                <Popular title={genreTitle} genreList={genreList}/>
+                <div className="anime-pagination" style={{display:'flex', gap:'1rem'}}>
+                  <button onClick={handlePagination} className="shadow featured-watch">{`< prev`}</button>
+                  <button className="shadow featured-watch">{selectedGenrePage}</button>
+                  <button onClick={handlePagination} className="shadow featured-watch">{`next >`}</button>
+                </div>
+            </div>
         </div>
   
   )
