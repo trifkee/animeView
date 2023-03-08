@@ -8,7 +8,7 @@ function Favorites() {
 
     const [animeList, setAnimeList] = useState({})
 
-    console.log(favorites)
+    //console.log(favorites)
     // favorites.forEach( fav => {
     //     const {data} = useQuery('favAnime', () => {
     //         return axios (`https://api.jikan.moe/v4/anime/${fav}`)
