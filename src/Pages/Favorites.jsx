@@ -24,7 +24,7 @@ function Favorites() {
                 
             <h2>Favorites</h2>
             <div className="popular-catalog">
-                { favorites.map(anime => <p>{anime}</p>) }
+                { favorites?.map(anime => <p>{anime}</p>) }
                 {/* {genreList?.data.data.map(anime => <Anime key={anime.mal_id} id={anime.mal_id} image={anime.images.jpg.image_url} title={anime.title_english || anime.title_japanese || 'unknown' } year={anime.year} props={anime}/>)} */}
             </div>
             
