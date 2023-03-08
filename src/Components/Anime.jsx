@@ -5,7 +5,7 @@ function Anime({image, title, id, year}) {
 
   return (
     <Link to={`/anime/${id}`} className='anime-icon shadow'>
-        <img src={image} />
+        <img loading='lazy' src={image} alt={title}/>
         <p className='anime-title'>{title}</p>
         <span className='anime-year'>Year: {year || 'unknown'}</span>
     </Link>
