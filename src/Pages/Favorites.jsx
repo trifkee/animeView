@@ -7,7 +7,7 @@ import loading from '../assets/loading.gif'
 import { useQueries } from 'react-query'
 
 function Favorites() {
-    const { favorites } = useContext(AnimeContext)
+    const { favorites, removeFavorite } = useContext(AnimeContext)
 
     const fetchFavorites = id => {
         return axios.get(`https://api.jikan.moe/v4/anime/${id}`)
@@ -22,7 +22,7 @@ function Favorites() {
         })
     )
 
-    console.log(result.length)
+    localStorage.setItem('favorites', JSON.stringify(favorites))
 
     return (
         <section className='popular-section'>
@@ -35,7 +35,12 @@ function Favorites() {
                     <div className="popular-catalog">
                         {result.map(anime => {
                             if(anime?.isFetched){
-                                return <Anime key={anime.data.data.data.mal_id} id={anime.data.data.data.mal_id} image={anime.data.data.data.images.jpg.image_url} title={anime.data.data.data.title_english || anime.data.data.data.title_japanese || 'unknown' } year={anime.data.data.data.year} props={anime} />
+                                return (
+                                    <div key={anime.data.data.data.mal_id}  style={{display:'flex', flexDirection:'column', width:'100%',justifyContent:'space-between'}}>
+                                        <Anime key={anime.data.data.data.mal_id} id={anime.data.data.data.mal_id} image={anime.data.data.data.images.jpg.image_url} title={anime.data.data.data.title_english || anime.data.data.data.title_japanese || 'unknown' } year={anime.data.data.data.year} props={anime} />
+                                        <button onClick={(e) => removeFavorite(e, anime.data.data.data.mal_id)} className='anime-favorite shadow'>Dislike<ion-icon className='shadow' name='heart-dislike-sharp'></ion-icon></button>
+                                    </div>
+                                )
                             } else {
                                 return(
                                     <div className='loading-gif'>
