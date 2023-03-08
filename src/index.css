@@ -880,7 +880,7 @@ nav{
   }
 
   .recommended-animes{
-    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+    grid-template-columns: repeat(5, minmax(9rem, 1fr));
   }
 
   .anime-page-test{
