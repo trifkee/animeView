@@ -16,10 +16,10 @@ export function AnimeProvider({children}){
     }
 
     // SAVED ANIMES
-    // ....
-
+    const [favorites, setFavorites] = useState(JSON.parse(localStorage.getItem('favorites')))
+    
     return (
-        <AnimeContext.Provider value={{openNav, handleNav, handleCloseNav}}>{children}</AnimeContext.Provider>
+        <AnimeContext.Provider value={{openNav, handleNav, handleCloseNav, favorites, setFavorites}}>{children}</AnimeContext.Provider>
     )
 }
 
