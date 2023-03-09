@@ -15,7 +15,7 @@ function Genres() {
   })
 
   const {data:genreList, isFetching, refetch} = useQuery('animeByGenre', () => {
-    return axios.get(`https://api.jikan.moe/v4/anime?genres=${selectedGenre}&page=${selectedGenrePage}`)
+    return axios.get(`https://api.jikan.moe/v4/anime?genres=${selectedGenre}&page=${selectedGenrePage}&limit=10`)
   })
 
   const handleClick = (e, genreId) => {
