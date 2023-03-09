@@ -30,6 +30,13 @@ button{
   cursor: pointer;
 }
 
+button:active {
+  transform: translateY(3px);
+  outline: none!important;
+  box-shadow: none!important;
+  /* border: none!important; */
+}
+
 ion-icon{
   --ionicon-stroke-width: 3rem;
 }
