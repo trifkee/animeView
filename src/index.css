@@ -372,7 +372,7 @@ nav{
   /* flex-direction: column; */
   flex-flow: column;
   overflow: hidden;
-  width: 100%;
+  min-width: 100%;
   max-width: 20rem;
   /* background-color: var(--gray); */
   -webkit-text-fill-color: var(--gray);
