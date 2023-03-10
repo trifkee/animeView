@@ -77,7 +77,7 @@ function AnimePage() {
                 <div className="anime-page-heading"  style={style}>
                     <img loading='lazy' className='anime-page-image shadow' alt={anime?.title_english || anime?.titles[1] || anime?.title_japanese } src={anime?.images.webp.image_url}/>
                     <div style={{display:'flex', gap:'1rem', width:'100%',justifyContent:'space-between'}}>
-                    {url[0] && <a href={url[0].url} rel="noreferrer" target="_blank" style={{padding:'.5rem 1rem', width:'100%', fontWeight:'800'}} className="featured-watch shadow">WATCH NOW <ion-icon name="play-sharp"></ion-icon></a>}
+                    {url?.[0] && <a href={url[0].url} rel="noreferrer" target="_blank" style={{padding:'.5rem 1rem', width:'100%', fontWeight:'800'}} className="featured-watch shadow">WATCH NOW <ion-icon name="play-sharp"></ion-icon></a>}
                     <button className='anime-favorite shadow' onClick={(e) => handleFavorite(e, anime?.mal_id)}>{!isFavorite ? 'Like' : 'Dislike'}<ion-icon className='shadow' name={!isFavorite ? 'heart-sharp' : 'heart-dislike-sharp'}></ion-icon></button>
 
                     </div>
